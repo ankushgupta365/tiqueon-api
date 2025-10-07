@@ -24,7 +24,7 @@ const app = express();
 const BASE_PATH = config.BASE_PATH;
 
 if (config.NODE_ENV === 'production') {
-  app.set('trust proxy', 1); // Trust the first proxy (Render/Vercel)
+  app.set('trust proxy', true); // Trust the first proxy (Render/Vercel)
 }
 
 app.use(express.json());
