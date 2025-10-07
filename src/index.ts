@@ -24,7 +24,7 @@ const app = express();
 const BASE_PATH = config.BASE_PATH;
 
 if (config.NODE_ENV === 'production') {
-  app.set('trust proxy', 10); // Trust the first proxy (Render/Vercel)
+  app.set('trust proxy', 1); // Trust the first proxy (Render/Vercel)
 }
 
 app.use(express.json());
@@ -43,9 +43,9 @@ app.use(
     name: "session",
     keys: [config.SESSION_SECRET],
     maxAge: 24 * 60 * 60 * 1000,
-    secure: true,
+    secure: config.NODE_ENV == 'production',
     httpOnly: true,
-    sameSite: "none",
+    sameSite: config.NODE_ENV == 'production' ? 'none': 'lax',
   })
 );
 
