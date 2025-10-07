@@ -23,6 +23,10 @@ import taskRoutes from "./routes/task.route";
 const app = express();
 const BASE_PATH = config.BASE_PATH;
 
+if (config.NODE_ENV === 'production') {
+  app.set('trust proxy', 10); // Trust the first proxy (Render/Vercel)
+}
+
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
