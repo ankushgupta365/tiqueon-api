@@ -40,13 +40,13 @@ app.use(
 
 app.use(
   session({
-    name: "session-tiqueon-cookie",
+    name: "session-tiqueon-cookie-1",
     keys: [config.SESSION_SECRET],
     maxAge: 24 * 60 * 60 * 1000,
     secure: config.NODE_ENV == 'production',
     httpOnly: true,
     sameSite: config.NODE_ENV == 'production' ? 'none': 'lax',
-    secureProxy: config.NODE_ENV == 'production'? true:undefined,
+    secureProxy: config.NODE_ENV == 'production'
   })
 );
 
